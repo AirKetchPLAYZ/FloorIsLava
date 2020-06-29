@@ -1,0 +1,9 @@
+name: FloorLava
+version: ${project.version}
+main: com.yourcompany.cantbebothered.com.yourcompany.stillcantbebothered.Plugin
+commands:
+  startlava:
+    description: makes lava rise
+  stoplava:
+    description: makes lava fall
+api-version: 1.15
