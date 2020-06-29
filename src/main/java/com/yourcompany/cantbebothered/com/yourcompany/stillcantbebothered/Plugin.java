@@ -126,9 +126,10 @@ public final class Plugin extends JavaPlugin {
     }
 
     public void updateLavaLevel() {
-
+        Bukkit.broadcastMessage("Updating lava level...");
         for (World w : Bukkit.getWorlds()) {
             if (w.getEnvironment() == World.Environment.NETHER) {
+                Bukkit.broadcastMessage("Nether lava level..." + levelNether);
                 int prev = levelNether;
                 for (Chunk c : w.getLoadedChunks()) {
 
@@ -141,6 +142,8 @@ public final class Plugin extends JavaPlugin {
                         {
                             for (int y = 0; y <= levelNether; y++)
                             {
+                                Bukkit.broadcastMessage("Y level "+ y);
+                                Bukkit.broadcastMessage("X: " + X+x + " Y: " + y + " Z: " + Z+z);
                                 if (c.getWorld().getBlockAt(X+x, y, Z+z).getType() == Material.AIR)
                                 {
                                     c.getWorld().getBlockAt(X+x, y, Z+z).setType(Material.LAVA);
@@ -153,7 +156,7 @@ public final class Plugin extends JavaPlugin {
                     {
                         for (int z = 0; z < 16; z++) // whole chunk
                         {
-                            for (int y = levelNether; y <= prev; y++)
+                            for (int y = levelNether+1; y <= 256; y++)
                             {
                                 if (c.getWorld().getBlockAt(X+x, y, Z+z).getType() == Material.LAVA)
                                 {
@@ -165,6 +168,7 @@ public final class Plugin extends JavaPlugin {
                 }
             }
             if (w.getEnvironment() == World.Environment.THE_END) {
+                Bukkit.broadcastMessage("End lava level..." + levelEnd);
                 int prev = levelEnd;
                 for (Chunk c : w.getLoadedChunks()) {
 
@@ -177,6 +181,8 @@ public final class Plugin extends JavaPlugin {
                         {
                             for (int y = 0; y <= levelEnd; y++)
                             {
+                                Bukkit.broadcastMessage("Y level "+ y);
+                                Bukkit.broadcastMessage("X: " + X+x + " Y: " + y + " Z: " + Z+z);
                                 if (c.getWorld().getBlockAt(X+x, y, Z+z).getType() == Material.AIR)
                                 {
                                     c.getWorld().getBlockAt(X+x, y, Z+z).setType(Material.LAVA);
@@ -189,7 +195,7 @@ public final class Plugin extends JavaPlugin {
                     {
                         for (int z = 0; z < 16; z++) // whole chunk
                         {
-                            for (int y = levelEnd; y <= prev; y++)
+                            for (int y = levelEnd+1; y <= 256; y++)
                             {
                                 if (c.getWorld().getBlockAt(X+x, y, Z+z).getType() == Material.LAVA)
                                 {
@@ -200,6 +206,7 @@ public final class Plugin extends JavaPlugin {
                     }
                 }
             } else {
+                Bukkit.broadcastMessage("Overworld lava level..." + level);
                 int prev = level;
                 for (Chunk c : w.getLoadedChunks()) {
 
@@ -212,6 +219,8 @@ public final class Plugin extends JavaPlugin {
                         {
                             for (int y = 0; y <= level; y++)
                             {
+                                Bukkit.broadcastMessage("Y level "+ y);
+                                Bukkit.broadcastMessage("X: " + X+x + " Y: " + y + " Z: " + Z+z);
                                 if (c.getWorld().getBlockAt(X+x, y, Z+z).getType() == Material.AIR)
                                 {
                                     c.getWorld().getBlockAt(X+x, y, Z+z).setType(Material.LAVA);
@@ -224,7 +233,7 @@ public final class Plugin extends JavaPlugin {
                     {
                         for (int z = 0; z < 16; z++) // whole chunk
                         {
-                            for (int y = level; y <= prev; y++)
+                            for (int y = level+1; y <= 256; y++)
                             {
                                 if (c.getWorld().getBlockAt(X+x, y, Z+z).getType() == Material.LAVA)
                                 {
